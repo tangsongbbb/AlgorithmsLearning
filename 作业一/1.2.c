@@ -11,7 +11,7 @@ void Create(int Vnum, int Enum) {
 			edge[i][j] = maxWg;
 	}
 	for (i = 1; i <= Enum; i++) {
-		scanf("%d %d %d", &u, &v, &e);
+		scanf_s("%d %d %d", &u, &v, &e);
 		edge[u][v] = e;
 		edge[v][u] = e;
 	}
@@ -55,7 +55,24 @@ void Kruskal(int Vnum) {
 
 int main() {
 	int Vnum, Enum;
-	scanf("%d %d", &Vnum, &Enum);
+	scanf_s("%d %d", &Vnum, &Enum);
 	Create(Vnum, Enum);
-	Kruskal(Vnum, Enum);
+	Kruskal(Vnum);
 }
+
+/*
+input:
+7 12
+1 2 2
+1 3 4
+1 4 1
+2 4 3
+2 5 10
+3 4 2
+4 5 7
+6 3 5
+6 4 8
+7 4 4
+7 5 6
+6 7 1
+*/
