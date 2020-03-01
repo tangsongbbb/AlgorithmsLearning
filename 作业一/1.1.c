@@ -4,7 +4,7 @@
 int edge[maxVnum][maxVnum];
 
 void Create(int Vnum, int Enum){
-	int u, v, e, i;
+	int u, v, e, i, j;
 	for(i = 1; i <= Vnum; i++){
 		for(j = 1; j <= Vnum; j++)
 			edge[i][j] = maxWg;
