@@ -1,7 +1,7 @@
 #include<stdio.h>
 #define maxVnum 1000
 #define maxWg 999
-int edge[maxVnum][maxVnum]
+int edge[maxVnum][maxVnum];
 
 void Create(int Vnum, int Enum){
 	int u, v, e, i;
