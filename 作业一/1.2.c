@@ -28,7 +28,7 @@ void Union(int x, int y) {
 	parent[father(y)] = father(x);
 }
 
-void Kruskal(int Vnum, int Enum) {
+void Kruskal(int Vnum) {
 	int i, j, u, v;
 	int count = 0;
 	for (i = 1; i <= Vnum; i++)
