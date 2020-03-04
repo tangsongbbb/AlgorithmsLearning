@@ -9,7 +9,6 @@ input:
 4 3 12
 1 4 4
 4 1 5
-
 */
 #include<stdio.h>
 #define MAX_NUM 999
