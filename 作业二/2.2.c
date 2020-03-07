@@ -19,6 +19,7 @@ input:
 int D[MAX_NUM][MAX_NUM];
 int dis[MAX_NUM];
 int visted[MAX_NUM];
+int path[MAX_NUM];
 
 void Create(int Vnum, int Enum) {
 	int i, j;
@@ -42,9 +43,16 @@ void Dijkstra(int Vnum, int start, int end) {
 	int i, j, k;
 	int min, flag;
 	for (i = 1; i <= Vnum; i++) {
+		if (D[start][i] != MAX_NUM)
+			path[i] = start;
+		else
+			path[i] = 0;
+	}
+	for (i = 1; i <= Vnum; i++) {
 		dis[i] = D[start][i];
 	}
 	visted[start] = 1;
+	path[start] = 0;
 	for (i = 0; i <= Vnum; i++) {
 		min = MAX_NUM;
 		for (j = 1; j <= Vnum; j++) {
@@ -55,18 +63,35 @@ void Dijkstra(int Vnum, int start, int end) {
 		}
 		visted[flag] = 1;
 		for (k = 1; k <= Vnum; k++) {
-			if (D[flag][k] + dis[flag] < dis[k])
+			if (!visted[k] && D[flag][k] + dis[flag] < dis[k]) {
 				dis[k] = D[flag][k] + dis[flag];
+				path[k] = flag;
+			}
 		}
+		if (flag == end)
+			break;
 	}
-	printf("%d\n", dis[end]);
 }
 
 int main(){
 	int Vnum, Enum;
+	int start, end;
+	int i, j, t[MAX_NUM];
 	scanf_s("%d %d", &Vnum, &Enum);
 	Create(Vnum, Enum);
-	int start, end;
 	scanf_s("%d %d", &start, &end);
 	Dijkstra(Vnum, start, end);
+	j = 1;
+	t[0] = end;
+	for (i = end; path[i] != 0; i = path[i]) {
+		t[j] = path[i];
+		j++;
+	}
+	for (i = j - 1; i >= 0; i--) {
+		printf("%d", t[i]);
+		if (i != 0)
+			printf("-->");
+		else
+			printf("\n");
+	}
 }
