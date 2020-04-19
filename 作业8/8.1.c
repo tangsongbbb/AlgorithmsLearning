@@ -35,9 +35,9 @@ int main() {
 	int p[100];
 	int m[100][100], s[100][100];
 	int n;
-	printf("please input the n:");
+	printf("请输入向量p中 !元素! 的个数:");
 	scanf_s("%d", &n);
-	printf("Please input the matrix:\n");
+	printf("请输入向量p的元素:\n");
 	for (int i = 0; i < n; i++) {
 		scanf_s("%d", &p[i]);
 	}
