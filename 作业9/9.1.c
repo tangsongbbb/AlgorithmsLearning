@@ -35,21 +35,21 @@ void LCS(char* str1, char* str2, int** char1, int** char2) {
 	}
 }
 
-void PrintLCS(char* str, int** b, int i, int j) {
+void FindLCS(char* str, int** b, int i, int j) {
 	if (i == 0 || j == 0)
 		return;
 	if (b[i][j] == EQUAL) {
-		PrintLCS(str, b, i - 1, j - 1);
+		FindLCS(str, b, i - 1, j - 1);
 		printf("%c ", str[i - 1]);
 	}
 	else if (b[i][j] == UP)
-		PrintLCS(str, b, i - 1, j);
+		FindLCS(str, b, i - 1, j);
 	else
-		PrintLCS(str, b, i, j - 1);
+		FindLCS(str, b, i, j - 1);
 
 }
 
-void FindLCS(char* str1, char* str2) {
+void PrintLCS(char* str1, char* str2) {
 	int i, j;
 	int len1 = strlen(str1), len2 = strlen(str2);
 	int** c = (int**)malloc(sizeof(int*) * (len1 + 1));
@@ -65,7 +65,7 @@ void FindLCS(char* str1, char* str2) {
 		}
 	LCS(str1, str2, c, b);
 	printf("The LCS is: ");
-	PrintLCS(str1, b, len1, len2);
+	FindLCS(str1, b, len1, len2);
 	printf("\n");
 
 	for (i = 0; i <= len1; i++) {
@@ -83,5 +83,5 @@ int main(int* argc, int* argv[]) {
 	scanf_s("%s", X, 50);
 	printf("please enter your characters2:");
 	scanf_s("%s", Y, 50);
-	FindLCS(X, Y);
+	PrintLCS(X, Y);
 }
